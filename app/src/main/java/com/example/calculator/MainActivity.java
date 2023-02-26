@@ -3,6 +3,7 @@ package com.example.calculator;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -13,75 +14,25 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView resultField;
-    private EditText numberOne;
-    private EditText numberTwo;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.calculator);
+        setContentView(R.layout.activity_main);
 
         DisplayMetrics display = getResources().getDisplayMetrics();
         if ((display.heightPixels>=1920 & display.widthPixels>=1080)||
                 (display.heightPixels>=1080 & display.widthPixels>=1920)) {
             showAlert("Разрешение экрана устройства несовместимо с приложением!", true);
         }
-
-        resultField = findViewById(R.id.textView);
-        numberOne = findViewById(R.id.editTextNumberDecimal);
-        numberTwo = findViewById(R.id.editTextNumberDecimal2);
     }
 
-    public void calculateResult(View view) {
-        Button button = (Button)view;
-        String operation = button.getText().toString();
-
-        String numberOneStr = numberOne.getText().toString();
-        String numberTwoStr = numberTwo.getText().toString();
-
-        if (numberOneStr.length() > 0 && numberOneStr != null && numberTwoStr.length() > 0 && numberTwoStr != null) {
-            double a = Double.parseDouble(numberOneStr);
-            double b = Double.parseDouble(numberTwoStr);
-            double result = 0;
-
-            try {
-                switch (operation) {
-                    case "+":
-                        result = a + b;
-                        break;
-                    case "-":
-                        result = a - b;
-                        break;
-                    case "*":
-                        result = a * b;
-                        break;
-                    case "/":
-                        if (b != 0)
-                            result = a / b;
-                        else
-                            throw new Exception("делить на ноль нельзя!");
-                        break;
-                    default:
-                        break;
-                }
-            } catch (Exception ex) {
-                showAlert("Во время расчета произошла ошибка: " + ex.getMessage(), false);
-                clearInput(view);
-                return;
-            }
-
-            resultField.setText(String.valueOf(result));
-        } else {
-            showAlert("Необходимо ввести оба числа!", false);
-            clearInput(view);
-        }
+    public void openCalculator(View view) {
+        Intent intent = new Intent(this, CalculatorActivity.class);
+        startActivity(intent);
     }
 
-    public void clearInput(View view) {
-        numberOne.getText().clear();
-        numberTwo.getText().clear();
-        resultField.setText("");
+    public void close(View view) {
+        this.finishAffinity();
     }
 
     public void showAlert(String errorText, boolean serious) {
