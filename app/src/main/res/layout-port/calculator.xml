@@ -30,6 +30,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:onClick="calculateResult"
+            android:layout_marginLeft="8dp"
             android:text="-"></Button>
 
         <Button
@@ -37,6 +38,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:onClick="calculateResult"
+            android:layout_marginLeft="8dp"
             android:text="*"></Button>
 
         <Button
@@ -44,6 +46,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:onClick="calculateResult"
+            android:layout_marginLeft="8dp"
             android:text="/"></Button>
 
         <Button
@@ -51,6 +54,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:onClick="clearInput"
+            android:layout_marginLeft="8dp"
             android:text="C"></Button>
     </LinearLayout>
 
