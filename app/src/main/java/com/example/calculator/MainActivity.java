@@ -30,6 +30,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, CalculatorActivity.class);
         startActivity(intent);
     }
+    public void openGraph(View view) {
+        Intent intent = new Intent(this, GraphActivity.class);
+        startActivity(intent);
+    }
 
     public void close(View view) {
         this.finishAffinity();

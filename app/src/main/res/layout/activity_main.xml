@@ -36,6 +36,7 @@
             android:layout_weight="1"
             android:background="@color/white"
             android:contentDescription="Графики"
+            android:onClick="openGraph"
             android:enabled="false"
             android:src="@drawable/graph" />
     </LinearLayout>
